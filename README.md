@@ -1,2 +1,2 @@
 # svgs
-"Super Video Game System". Fantasy home computer. Work-in-progress. (twitter: #supervgs)
+"Super Video Game System". Fantasy home computer. Work-in-progress. (https://twitter.com/hashtag/supervgs)
