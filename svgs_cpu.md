@@ -12,7 +12,7 @@ nop
 No operation
 
 ### Operand Types and Cycle Counts
-No operands. Cycle count: 4
+No operands. Cycle count: 2
 
 
 jsr
@@ -28,17 +28,17 @@ Jump to subroutine at location specified by argA. Will push the current value of
 
 argA     | cycles
 ---------|-------
-areg     | 8
-@areg    | 16
-@areg+   | 16
-@areg-   | 16
-dreg     | 8
-sp(ofs)  | 12
-@sp(ofs) | 20
-ival     | 12
-@ival    | 24
-label    | 12
-@label   | 24
+areg     | 4
+@areg    | 12
+@areg+   | 12
+@areg-   | 12
+dreg     | 4
+sp(ofs)  | 8
+@sp(ofs) | 16
+ival     | 8
+@ival    | 20
+label    | 8
+@label   | 20
 freg     | -
 fval     | -
 
@@ -56,17 +56,17 @@ Jump to location specified by argA.
 
 argA     | cycles
 ---------|-------
-areg     | 8
-@areg    | 16
-@areg+   | 16
-@areg-   | 16
-dreg     | 8
-sp(ofs)  | 12
-@sp(ofs) | 20
-ival     | 12
-@ival    | 24
-label    | 12
-@label   | 24
+areg     | 4
+@areg    | 12
+@areg+   | 12
+@areg-   | 12
+dreg     | 4
+sp(ofs)  | 8
+@sp(ofs) | 16
+ival     | 8
+@ival    | 20
+label    | 8
+@label   | 20
 freg     | -
 fval     | -
 
@@ -81,7 +81,7 @@ ret
 Return from subroutine call made by jsr. Will pop the return address off the stack.
 
 ### Operand Types and Cycle Counts
-No operands. Cycle count: 8
+No operands. Cycle count: 4
 
 
 sys
@@ -97,17 +97,17 @@ Make a BIOS call. See the BIOS documentation for available BIOS calls.
 
 argA     | cycles
 ---------|-------
-areg     | 64
-@areg    | 72
-@areg+   | 72
-@areg-   | 72
-dreg     | 64
-sp(ofs)  | 68
-@sp(ofs) | 76
-ival     | 68
-@ival    | 80
-label    | 68
-@label   | 80
+areg     | 32
+@areg    | 40
+@areg+   | 40
+@areg-   | 40
+dreg     | 32
+sp(ofs)  | 36
+@sp(ofs) | 44
+ival     | 36
+@ival    | 48
+label    | 36
+@label   | 48
 freg     | -
 fval     | -
 
@@ -125,19 +125,19 @@ Move the value specified by argA to the location specified by argB.
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | 4       | -       |
-|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
-|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
-|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
-|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | 4       | -       |
-|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
-|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
-|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
-|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|freg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | 4       | -       |
-|fval             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|areg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | 2       | -       |
+|@areg            | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | 10      | -       |
+|@areg+           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | 10      | -       |
+|@areg-           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | 10      | -       |
+|dreg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | 2       | -       |
+|sp(ofs)          | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | 6       | -       |
+|@sp(ofs)         | 14      | 22      | 22      | 22      | 14      | 18      | 26      | -       | 30      | -       | 30      | 14      | -       |
+|ival             | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | 6       | -       |
+|@ival            | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | 18      | -       |
+|label            | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | 6       | -       |
+|@label           | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | 18      | -       |
+|freg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | 2       | -       |
+|fval             | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | 6       | -       |
 
 
 xmov
@@ -154,9 +154,9 @@ Move the value specified by argA to the location specified by argB. This will be
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
 |areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg            | -       | 32      | 32      | 32      | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg+           | -       | 32      | 32      | 32      | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg-           | -       | 32      | 32      | 32      | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+|@areg            | -       | 24      | 24      | 24      | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+|@areg+           | -       | 24      | 24      | 24      | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+|@areg-           | -       | 24      | 24      | 24      | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |sp(ofs)          | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |@sp(ofs)         | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
@@ -181,17 +181,17 @@ Add the value specified by argA to the value at the location specified by argB, 
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@areg            | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@areg+           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@areg-           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|dreg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|sp(ofs)          | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@sp(ofs)         | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|ival             | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@ival            | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
-|label            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@label           | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
+|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
+|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
+|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
+|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -210,18 +210,18 @@ Add the value specified by argA to the value at the location specified by argB, 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
 |areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg            | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
+|@areg            | -       | 22      | -       | -       | -       | 18      | 26      | -       | 30      | -       | 30      | 14      | -       |
 |@areg+           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |@areg-           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|sp(ofs)          | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|@sp(ofs)         | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|sp(ofs)          | -       | 18      | -       | -       | -       | 14      | 22      | -       | 26      | -       | 26      | 10      | -       |
+|@sp(ofs)         | -       | 26      | -       | -       | -       | 22      | 30      | -       | 34      | -       | 34      | 18      | -       |
 |ival             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@ival            | -       | 36      | -       | -       | -       | 32      | 40      | -       | 44      | -       | 44      | 28      | -       |
+|@ival            | -       | 30      | -       | -       | -       | 26      | 34      | -       | 38      | -       | 38      | 22      | -       |
 |label            | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@label           | -       | 36      | -       | -       | -       | 32      | 40      | -       | 44      | -       | 44      | 28      | -       |
-|freg             | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
-|fval             | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
+|@label           | -       | 30      | -       | -       | -       | 26      | 34      | -       | 38      | -       | 38      | 22      | -       |
+|freg             | -       | 14      | -       | -       | -       | 10      | 18      | -       | 22      | -       | 22      | 6       | -       |
+|fval             | -       | 18      | -       | -       | -       | 14      | 22      | -       | 26      | -       | 26      | 10      | -       |
 
 
 sub
@@ -232,6 +232,202 @@ sub
 
 ### Function
 Subtract the value specified by argA from the value at the location specified by argB, and store the result at the location specified by argB.
+
+### Operand Types and Cycle Counts
+
+|**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
+|-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
+|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
+|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
+|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
+|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+|fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+
+
+sub
+---
+
+### Syntax
+	sub.f argA, argB
+
+### Function
+Subtract the value specified by argA from the value at the location specified by argB, and store the result at the location specified by argB.
+
+### Operand Types and Cycle Counts
+
+|**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
+|-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
+|areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+|@areg            | -       | 22      | -       | -       | -       | 18      | 26      | -       | 30      | -       | 30      | 14      | -       |
+|@areg+           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+|@areg-           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+|dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+|sp(ofs)          | -       | 18      | -       | -       | -       | 14      | 22      | -       | 26      | -       | 26      | 10      | -       |
+|@sp(ofs)         | -       | 26      | -       | -       | -       | 22      | 30      | -       | 34      | -       | 34      | 18      | -       |
+|ival             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+|@ival            | -       | 30      | -       | -       | -       | 26      | 34      | -       | 38      | -       | 38      | 22      | -       |
+|label            | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+|@label           | -       | 30      | -       | -       | -       | 26      | 34      | -       | 38      | -       | 38      | 22      | -       |
+|freg             | -       | 14      | -       | -       | -       | 10      | 18      | -       | 22      | -       | 22      | 6       | -       |
+|fval             | -       | 18      | -       | -       | -       | 14      | 22      | -       | 26      | -       | 26      | 10      | -       |
+
+
+neg
+---
+
+### Syntax
+	neg<.b/.w/.l> argA
+
+### Function
+Negate the value at the location specified by argA
+
+### Operand Types and Cycle Counts
+
+argA     | cycles
+---------|-------
+areg     | 2
+@areg    | 10
+@areg+   | 10
+@areg-   | 10
+dreg     | 2
+sp(ofs)  | 6
+@sp(ofs) | 14
+ival     | -
+@ival    | 18
+label    | -
+@label   | 18
+freg     | -
+fval     | -
+
+
+neg
+---
+
+### Syntax
+	neg.f argA
+
+### Function
+Negate the value at the location specified by argA
+
+### Operand Types and Cycle Counts
+
+argA     | cycles
+---------|-------
+areg     | -
+@areg    | 10
+@areg+   | -
+@areg-   | -
+dreg     | -
+sp(ofs)  | 6
+@sp(ofs) | 14
+ival     | -
+@ival    | 18
+label    | -
+@label   | 18
+freg     | 2
+fval     | -
+
+
+muls
+----
+
+### Syntax
+	muls<.b/.w/.l> argA, argB
+
+### Function
+Multiply the value specified by argA and the value at the location specified by argB, and store the result at the location specified by argB. Treat argA and argB as signed integer numbers.
+
+### Operand Types and Cycle Counts
+
+|**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
+|-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
+|areg             | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@areg            | 14      | 22      | 22      | 22      | 14      | 18      | 26      | -       | 30      | -       | 30      | -       | -       |
+|@areg+           | 14      | 22      | 22      | 22      | 14      | 18      | 26      | -       | 30      | -       | 30      | -       | -       |
+|@areg-           | 14      | 22      | 22      | 22      | 14      | 18      | 26      | -       | 30      | -       | 30      | -       | -       |
+|dreg             | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|sp(ofs)          | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@sp(ofs)         | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
+|ival             | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@ival            | 22      | 30      | 30      | 30      | 22      | 26      | 34      | -       | 38      | -       | 38      | -       | -       |
+|label            | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@label           | 22      | 30      | 30      | 30      | 22      | 26      | 34      | -       | 38      | -       | 38      | -       | -       |
+|freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+|fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+
+
+mulu
+----
+
+### Syntax
+	mulu<.b/.w/.l> argA, argB
+
+### Function
+Multiply the value specified by argA and the value at the location specified by argB, and store the result at the location specified by argB. Treat argA and argB as unsigned integer numbers.
+
+### Operand Types and Cycle Counts
+
+|**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
+|-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
+|areg             | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@areg            | 14      | 22      | 22      | 22      | 14      | 18      | 26      | -       | 30      | -       | 30      | -       | -       |
+|@areg+           | 14      | 22      | 22      | 22      | 14      | 18      | 26      | -       | 30      | -       | 30      | -       | -       |
+|@areg-           | 14      | 22      | 22      | 22      | 14      | 18      | 26      | -       | 30      | -       | 30      | -       | -       |
+|dreg             | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|sp(ofs)          | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@sp(ofs)         | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
+|ival             | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@ival            | 22      | 30      | 30      | 30      | 22      | 26      | 34      | -       | 38      | -       | 38      | -       | -       |
+|label            | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@label           | 22      | 30      | 30      | 30      | 22      | 26      | 34      | -       | 38      | -       | 38      | -       | -       |
+|freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+|fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+
+
+mul
+---
+
+### Syntax
+	mul.f argA, argB
+
+### Function
+Multiply the value specified by argA and the value at the location specified by argB, and store the result at the location specified by argB. Treat argA and argB as floating point numbers.
+
+### Operand Types and Cycle Counts
+
+|**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
+|-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
+|areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+|@areg            | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
+|@areg+           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+|@areg-           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+|dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+|sp(ofs)          | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|@sp(ofs)         | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
+|ival             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+|@ival            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|label            | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
+|@label           | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|freg             | -       | 16      | -       | -       | -       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|fval             | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+
+
+divs
+----
+
+### Syntax
+	divs<.b/.w/.l> argA, argB
+
+### Function
+Divide the value at the location specified by argB by the value specified by argA, and store the result at the location specified by argB. Treat argA and argB as signed integer numbers.
 
 ### Operand Types and Cycle Counts
 
@@ -252,202 +448,6 @@ Subtract the value specified by argA from the value at the location specified by
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
 
-sub
----
-
-### Syntax
-	sub.f argA, argB
-
-### Function
-Subtract the value specified by argA from the value at the location specified by argB, and store the result at the location specified by argB.
-
-### Operand Types and Cycle Counts
-
-|**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
-|-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg            | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|@areg+           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg-           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|sp(ofs)          | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|@sp(ofs)         | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
-|ival             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@ival            | -       | 36      | -       | -       | -       | 32      | 40      | -       | 44      | -       | 44      | 28      | -       |
-|label            | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@label           | -       | 36      | -       | -       | -       | 32      | 40      | -       | 44      | -       | 44      | 28      | -       |
-|freg             | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
-|fval             | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-
-
-neg
----
-
-### Syntax
-	neg<.b/.w/.l> argA
-
-### Function
-Negate the value at the location specified by argA
-
-### Operand Types and Cycle Counts
-
-argA     | cycles
----------|-------
-areg     | 4
-@areg    | 12
-@areg+   | 12
-@areg-   | 12
-dreg     | 4
-sp(ofs)  | 8
-@sp(ofs) | 16
-ival     | -
-@ival    | 20
-label    | -
-@label   | 20
-freg     | -
-fval     | -
-
-
-neg
----
-
-### Syntax
-	neg.f argA
-
-### Function
-Negate the value at the location specified by argA
-
-### Operand Types and Cycle Counts
-
-argA     | cycles
----------|-------
-areg     | -
-@areg    | 12
-@areg+   | -
-@areg-   | -
-dreg     | -
-sp(ofs)  | 8
-@sp(ofs) | 16
-ival     | -
-@ival    | 20
-label    | -
-@label   | 20
-freg     | 4
-fval     | -
-
-
-muls
-----
-
-### Syntax
-	muls<.b/.w/.l> argA, argB
-
-### Function
-Multiply the value specified by argA and the value at the location specified by argB, and store the result at the location specified by argB. Treat argA and argB as signed integer numbers.
-
-### Operand Types and Cycle Counts
-
-|**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
-|-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@areg            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|@areg+           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|@areg-           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|dreg             | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|sp(ofs)          | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@sp(ofs)         | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
-|ival             | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@ival            | 28      | 36      | 36      | 36      | 28      | 32      | 40      | -       | 44      | -       | 44      | -       | -       |
-|label            | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@label           | 28      | 36      | 36      | 36      | 28      | 32      | 40      | -       | 44      | -       | 44      | -       | -       |
-|freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-
-
-mulu
-----
-
-### Syntax
-	mulu<.b/.w/.l> argA, argB
-
-### Function
-Multiply the value specified by argA and the value at the location specified by argB, and store the result at the location specified by argB. Treat argA and argB as unsigned integer numbers.
-
-### Operand Types and Cycle Counts
-
-|**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
-|-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@areg            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|@areg+           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|@areg-           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|dreg             | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|sp(ofs)          | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@sp(ofs)         | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
-|ival             | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@ival            | 28      | 36      | 36      | 36      | 28      | 32      | 40      | -       | 44      | -       | 44      | -       | -       |
-|label            | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@label           | 28      | 36      | 36      | 36      | 28      | 32      | 40      | -       | 44      | -       | 44      | -       | -       |
-|freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-
-
-mul
----
-
-### Syntax
-	mul.f argA, argB
-
-### Function
-Multiply the value specified by argA and the value at the location specified by argB, and store the result at the location specified by argB. Treat argA and argB as floating point numbers.
-
-### Operand Types and Cycle Counts
-
-|**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
-|-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
-|@areg+           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg-           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|sp(ofs)          | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|@sp(ofs)         | -       | 36      | -       | -       | -       | 32      | 40      | -       | 44      | -       | 44      | 28      | -       |
-|ival             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@ival            | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
-|label            | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@label           | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
-|freg             | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|fval             | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-
-
-divs
-----
-
-### Syntax
-	divs<.b/.w/.l> argA, argB
-
-### Function
-Divide the value at the location specified by argB by the value specified by argA, and store the result at the location specified by argB. Treat argA and argB as signed integer numbers.
-
-### Operand Types and Cycle Counts
-
-|**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
-|-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@areg            | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
-|@areg+           | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
-|@areg-           | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
-|dreg             | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|sp(ofs)          | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|@sp(ofs)         | 28      | 36      | 36      | 36      | 28      | 32      | 40      | -       | 44      | -       | 44      | -       | -       |
-|ival             | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|@ival            | 32      | 40      | 40      | 40      | 32      | 36      | 44      | -       | 48      | -       | 48      | -       | -       |
-|label            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|@label           | 32      | 40      | 40      | 40      | 32      | 36      | 44      | -       | 48      | -       | 48      | -       | -       |
-|freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-
-
 divu
 ----
 
@@ -461,17 +461,17 @@ Divide the value at the location specified by argB by the value specified by arg
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@areg            | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
-|@areg+           | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
-|@areg-           | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
-|dreg             | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|sp(ofs)          | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|@sp(ofs)         | 28      | 36      | 36      | 36      | 28      | 32      | 40      | -       | 44      | -       | 44      | -       | -       |
-|ival             | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|@ival            | 32      | 40      | 40      | 40      | 32      | 36      | 44      | -       | 48      | -       | 48      | -       | -       |
-|label            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|@label           | 32      | 40      | 40      | 40      | 32      | 36      | 44      | -       | 48      | -       | 48      | -       | -       |
+|areg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@areg            | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
+|@areg+           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
+|@areg-           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
+|dreg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|sp(ofs)          | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@sp(ofs)         | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|ival             | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@ival            | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
+|label            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@label           | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -490,18 +490,18 @@ Divide the value at the location specified by argB by the value specified by arg
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
 |areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg            | -       | 36      | -       | -       | -       | 32      | 40      | -       | 44      | -       | 44      | 28      | -       |
+|@areg            | -       | 26      | -       | -       | -       | 22      | 30      | -       | 34      | -       | 34      | 18      | -       |
 |@areg+           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |@areg-           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|sp(ofs)          | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
-|@sp(ofs)         | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
+|sp(ofs)          | -       | 22      | -       | -       | -       | 18      | 26      | -       | 30      | -       | 30      | 14      | -       |
+|@sp(ofs)         | -       | 30      | -       | -       | -       | 26      | 34      | -       | 38      | -       | 38      | 22      | -       |
 |ival             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@ival            | -       | 44      | -       | -       | -       | 40      | 48      | -       | 52      | -       | 52      | 36      | -       |
+|@ival            | -       | 34      | -       | -       | -       | 30      | 38      | -       | 42      | -       | 42      | 26      | -       |
 |label            | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@label           | -       | 44      | -       | -       | -       | 40      | 48      | -       | 52      | -       | 52      | 36      | -       |
-|freg             | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|fval             | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|@label           | -       | 34      | -       | -       | -       | 30      | 38      | -       | 42      | -       | 42      | 26      | -       |
+|freg             | -       | 18      | -       | -       | -       | 14      | 22      | -       | 26      | -       | 26      | 10      | -       |
+|fval             | -       | 22      | -       | -       | -       | 18      | 26      | -       | 30      | -       | 30      | 14      | -       |
 
 
 itof
@@ -517,17 +517,17 @@ Convert the value specified by argA from an integer value into an floating point
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | -       | 12      | -       | -       | -       | 8       | 16      | -       | 20      | -       | 20      | 4       | -       |
-|@areg            | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
-|@areg+           | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
-|@areg-           | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
-|dreg             | -       | 12      | -       | -       | -       | 8       | 16      | -       | 20      | -       | 20      | 4       | -       |
-|sp(ofs)          | -       | 16      | -       | -       | -       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
-|@sp(ofs)         | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|ival             | -       | 16      | -       | -       | -       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
-|@ival            | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|label            | -       | 16      | -       | -       | -       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
-|@label           | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
+|areg             | -       | 10      | -       | -       | -       | 6       | 14      | -       | 18      | -       | 18      | 2       | -       |
+|@areg            | -       | 18      | -       | -       | -       | 14      | 22      | -       | 26      | -       | 26      | 10      | -       |
+|@areg+           | -       | 18      | -       | -       | -       | 14      | 22      | -       | 26      | -       | 26      | 10      | -       |
+|@areg-           | -       | 18      | -       | -       | -       | 14      | 22      | -       | 26      | -       | 26      | 10      | -       |
+|dreg             | -       | 10      | -       | -       | -       | 6       | 14      | -       | 18      | -       | 18      | 2       | -       |
+|sp(ofs)          | -       | 14      | -       | -       | -       | 10      | 18      | -       | 22      | -       | 22      | 6       | -       |
+|@sp(ofs)         | -       | 22      | -       | -       | -       | 18      | 26      | -       | 30      | -       | 30      | 14      | -       |
+|ival             | -       | 14      | -       | -       | -       | 10      | 18      | -       | 22      | -       | 22      | 6       | -       |
+|@ival            | -       | 26      | -       | -       | -       | 22      | 30      | -       | 34      | -       | 34      | 18      | -       |
+|label            | -       | 14      | -       | -       | -       | 10      | 18      | -       | 22      | -       | 22      | 6       | -       |
+|@label           | -       | 26      | -       | -       | -       | 22      | 30      | -       | 34      | -       | 34      | 18      | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -546,18 +546,18 @@ Convert the value specified by argA from a floating point value into an integer 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
 |areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg            | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
 |@areg+           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |@areg-           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
+|sp(ofs)          | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@sp(ofs)         | 14      | 22      | 22      | 22      | 14      | 18      | 26      | -       | 30      | -       | 30      | -       | -       |
 |ival             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|@ival            | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
 |label            | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|freg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
-|fval             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@label           | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
+|freg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | -       | -       |
+|fval             | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
 
 
 cmpu
@@ -573,17 +573,17 @@ Compare the value specified by argA with the value specified by argB. Treat argA
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | 8       | 20      | 8       | 20      | -       | -       |
-|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | 16      | 28      | 16      | 28      | -       | -       |
-|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | 16      | 28      | 16      | 28      | -       | -       |
-|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | 16      | 28      | 16      | 28      | -       | -       |
-|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | 8       | 20      | 8       | 20      | -       | -       |
-|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | 12      | 24      | 12      | 24      | -       | -       |
-|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | 20      | 32      | 20      | 32      | -       | -       |
-|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | 12      | 24      | 12      | 24      | -       | -       |
-|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | 24      | 36      | 24      | 36      | -       | -       |
-|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | 12      | 24      | 12      | 24      | -       | -       |
-|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | 24      | 36      | 24      | 36      | -       | -       |
+|areg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | 6       | 18      | 6       | 18      | -       | -       |
+|@areg            | 10      | 18      | 18      | 18      | 10      | 14      | 22      | 14      | 26      | 14      | 26      | -       | -       |
+|@areg+           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | 14      | 26      | 14      | 26      | -       | -       |
+|@areg-           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | 14      | 26      | 14      | 26      | -       | -       |
+|dreg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | 6       | 18      | 6       | 18      | -       | -       |
+|sp(ofs)          | 6       | 14      | 14      | 14      | 6       | 10      | 18      | 10      | 22      | 10      | 22      | -       | -       |
+|@sp(ofs)         | 14      | 22      | 22      | 22      | 14      | 18      | 26      | 18      | 30      | 18      | 30      | -       | -       |
+|ival             | 6       | 14      | 14      | 14      | 6       | 10      | 18      | 10      | 22      | 10      | 22      | -       | -       |
+|@ival            | 18      | 26      | 26      | 26      | 18      | 22      | 30      | 22      | 34      | 22      | 34      | -       | -       |
+|label            | 6       | 14      | 14      | 14      | 6       | 10      | 18      | 10      | 22      | 10      | 22      | -       | -       |
+|@label           | 18      | 26      | 26      | 26      | 18      | 22      | 30      | 22      | 34      | 22      | 34      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -601,17 +601,17 @@ Compare the value specified by argA with the value specified by argB. Treat argA
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | 8       | 20      | 8       | 20      | -       | -       |
-|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | 16      | 28      | 16      | 28      | -       | -       |
-|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | 16      | 28      | 16      | 28      | -       | -       |
-|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | 16      | 28      | 16      | 28      | -       | -       |
-|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | 8       | 20      | 8       | 20      | -       | -       |
-|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | 12      | 24      | 12      | 24      | -       | -       |
-|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | 20      | 32      | 20      | 32      | -       | -       |
-|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | 12      | 24      | 12      | 24      | -       | -       |
-|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | 24      | 36      | 24      | 36      | -       | -       |
-|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | 12      | 24      | 12      | 24      | -       | -       |
-|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | 24      | 36      | 24      | 36      | -       | -       |
+|areg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | 6       | 18      | 6       | 18      | -       | -       |
+|@areg            | 10      | 18      | 18      | 18      | 10      | 14      | 22      | 14      | 26      | 14      | 26      | -       | -       |
+|@areg+           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | 14      | 26      | 14      | 26      | -       | -       |
+|@areg-           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | 14      | 26      | 14      | 26      | -       | -       |
+|dreg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | 6       | 18      | 6       | 18      | -       | -       |
+|sp(ofs)          | 6       | 14      | 14      | 14      | 6       | 10      | 18      | 10      | 22      | 10      | 22      | -       | -       |
+|@sp(ofs)         | 14      | 22      | 22      | 22      | 14      | 18      | 26      | 18      | 30      | 18      | 30      | -       | -       |
+|ival             | 6       | 14      | 14      | 14      | 6       | 10      | 18      | 10      | 22      | 10      | 22      | -       | -       |
+|@ival            | 18      | 26      | 26      | 26      | 18      | 22      | 30      | 22      | 34      | 22      | 34      | -       | -       |
+|label            | 6       | 14      | 14      | 14      | 6       | 10      | 18      | 10      | 22      | 10      | 22      | -       | -       |
+|@label           | 18      | 26      | 26      | 26      | 18      | 22      | 30      | 22      | 34      | 22      | 34      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -630,18 +630,18 @@ Compare the value specified by argA with the value specified by argB. Treat argA
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
 |areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg            | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | 16      |
+|@areg            | -       | 18      | -       | -       | -       | 14      | 22      | -       | 26      | -       | 26      | 10      | 14      |
 |@areg+           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |@areg-           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|sp(ofs)          | -       | 16      | -       | -       | -       | 12      | 20      | -       | 24      | -       | 24      | 8       | 12      |
-|@sp(ofs)         | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | 20      |
+|sp(ofs)          | -       | 14      | -       | -       | -       | 10      | 18      | -       | 22      | -       | 22      | 6       | 10      |
+|@sp(ofs)         | -       | 22      | -       | -       | -       | 18      | 26      | -       | 30      | -       | 30      | 14      | 18      |
 |ival             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@ival            | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | 24      |
+|@ival            | -       | 26      | -       | -       | -       | 22      | 30      | -       | 34      | -       | 34      | 18      | 22      |
 |label            | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@label           | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | 24      |
-|freg             | -       | 12      | -       | -       | -       | 8       | 16      | -       | 20      | -       | 20      | 4       | 8       |
-|fval             | -       | 16      | -       | -       | -       | 12      | 20      | -       | 24      | -       | 24      | 8       | 12      |
+|@label           | -       | 26      | -       | -       | -       | 22      | 30      | -       | 34      | -       | 34      | 18      | 22      |
+|freg             | -       | 10      | -       | -       | -       | 6       | 14      | -       | 18      | -       | 18      | 2       | 6       |
+|fval             | -       | 14      | -       | -       | -       | 10      | 18      | -       | 22      | -       | 22      | 6       | 10      |
 
 
 tst
@@ -652,6 +652,62 @@ tst
 
 ### Function
 Test if value specified by argA is zero. The result is used in the next call to jz or jnz.
+
+### Operand Types and Cycle Counts
+
+argA     | cycles
+---------|-------
+areg     | 2
+@areg    | 10
+@areg+   | 10
+@areg-   | 10
+dreg     | 2
+sp(ofs)  | 6
+@sp(ofs) | 14
+ival     | 6
+@ival    | 18
+label    | 6
+@label   | 18
+freg     | -
+fval     | -
+
+
+tstf
+----
+
+### Syntax
+	tstf.f argA
+
+### Function
+Test if value specified by argA is zero. The result is used in the next call to jz or jnz.
+
+### Operand Types and Cycle Counts
+
+argA     | cycles
+---------|-------
+areg     | -
+@areg    | 10
+@areg+   | -
+@areg-   | -
+dreg     | -
+sp(ofs)  | 6
+@sp(ofs) | 14
+ival     | -
+@ival    | 18
+label    | -
+@label   | 18
+freg     | 2
+fval     | 6
+
+
+je
+--
+
+### Syntax
+	je argA
+
+### Function
+Jump to location specified by argA, if in the last compare (cmpu, cmps or cmp), argA was equal to argB.
 
 ### Operand Types and Cycle Counts
 
@@ -672,62 +728,6 @@ freg     | -
 fval     | -
 
 
-tstf
-----
-
-### Syntax
-	tstf.f argA
-
-### Function
-Test if value specified by argA is zero. The result is used in the next call to jz or jnz.
-
-### Operand Types and Cycle Counts
-
-argA     | cycles
----------|-------
-areg     | -
-@areg    | 12
-@areg+   | -
-@areg-   | -
-dreg     | -
-sp(ofs)  | 8
-@sp(ofs) | 16
-ival     | -
-@ival    | 20
-label    | -
-@label   | 20
-freg     | 4
-fval     | 8
-
-
-je
---
-
-### Syntax
-	je argA
-
-### Function
-Jump to location specified by argA, if in the last compare (cmpu, cmps or cmp), argA was equal to argB.
-
-### Operand Types and Cycle Counts
-
-argA     | cycles
----------|-------
-areg     | 8
-@areg    | 16
-@areg+   | 16
-@areg-   | 16
-dreg     | 8
-sp(ofs)  | 12
-@sp(ofs) | 20
-ival     | 12
-@ival    | 24
-label    | 12
-@label   | 24
-freg     | -
-fval     | -
-
-
 jne
 ---
 
@@ -741,17 +741,17 @@ Jump to location specified by argA, if in the last compare (cmpu, cmps or cmp), 
 
 argA     | cycles
 ---------|-------
-areg     | 8
-@areg    | 16
-@areg+   | 16
-@areg-   | 16
-dreg     | 8
-sp(ofs)  | 12
-@sp(ofs) | 20
-ival     | 12
-@ival    | 24
-label    | 12
-@label   | 24
+areg     | 4
+@areg    | 12
+@areg+   | 12
+@areg-   | 12
+dreg     | 4
+sp(ofs)  | 8
+@sp(ofs) | 16
+ival     | 8
+@ival    | 20
+label    | 8
+@label   | 20
 freg     | -
 fval     | -
 
@@ -769,17 +769,17 @@ Jump to location specified by argA, if in the last compare (cmpu, cmps or cmp), 
 
 argA     | cycles
 ---------|-------
-areg     | 8
-@areg    | 16
-@areg+   | 16
-@areg-   | 16
-dreg     | 8
-sp(ofs)  | 12
-@sp(ofs) | 20
-ival     | 12
-@ival    | 24
-label    | 12
-@label   | 24
+areg     | 4
+@areg    | 12
+@areg+   | 12
+@areg-   | 12
+dreg     | 4
+sp(ofs)  | 8
+@sp(ofs) | 16
+ival     | 8
+@ival    | 20
+label    | 8
+@label   | 20
 freg     | -
 fval     | -
 
@@ -797,17 +797,17 @@ Jump to location specified by argA, if in the last compare (cmpu, cmps or cmp), 
 
 argA     | cycles
 ---------|-------
-areg     | 8
-@areg    | 16
-@areg+   | 16
-@areg-   | 16
-dreg     | 8
-sp(ofs)  | 12
-@sp(ofs) | 20
-ival     | 12
-@ival    | 24
-label    | 12
-@label   | 24
+areg     | 4
+@areg    | 12
+@areg+   | 12
+@areg-   | 12
+dreg     | 4
+sp(ofs)  | 8
+@sp(ofs) | 16
+ival     | 8
+@ival    | 20
+label    | 8
+@label   | 20
 freg     | -
 fval     | -
 
@@ -825,17 +825,17 @@ Jump to location specified by argA, if in the last compare (cmpu, cmps or cmp), 
 
 argA     | cycles
 ---------|-------
-areg     | 8
-@areg    | 16
-@areg+   | 16
-@areg-   | 16
-dreg     | 8
-sp(ofs)  | 12
-@sp(ofs) | 20
-ival     | 12
-@ival    | 24
-label    | 12
-@label   | 24
+areg     | 4
+@areg    | 12
+@areg+   | 12
+@areg-   | 12
+dreg     | 4
+sp(ofs)  | 8
+@sp(ofs) | 16
+ival     | 8
+@ival    | 20
+label    | 8
+@label   | 20
 freg     | -
 fval     | -
 
@@ -853,17 +853,17 @@ Jump to location specified by argA, if in the last compare (cmpu, cmps or cmp), 
 
 argA     | cycles
 ---------|-------
-areg     | 8
-@areg    | 16
-@areg+   | 16
-@areg-   | 16
-dreg     | 8
-sp(ofs)  | 12
-@sp(ofs) | 20
-ival     | 12
-@ival    | 24
-label    | 12
-@label   | 24
+areg     | 4
+@areg    | 12
+@areg+   | 12
+@areg-   | 12
+dreg     | 4
+sp(ofs)  | 8
+@sp(ofs) | 16
+ival     | 8
+@ival    | 20
+label    | 8
+@label   | 20
 freg     | -
 fval     | -
 
@@ -881,17 +881,17 @@ Jump to location specified by argA, if in the last test (tst or btst), the resul
 
 argA     | cycles
 ---------|-------
-areg     | 8
-@areg    | 16
-@areg+   | 16
-@areg-   | 16
-dreg     | 8
-sp(ofs)  | 12
-@sp(ofs) | 20
-ival     | 12
-@ival    | 24
-label    | 12
-@label   | 24
+areg     | 4
+@areg    | 12
+@areg+   | 12
+@areg-   | 12
+dreg     | 4
+sp(ofs)  | 8
+@sp(ofs) | 16
+ival     | 8
+@ival    | 20
+label    | 8
+@label   | 20
 freg     | -
 fval     | -
 
@@ -909,17 +909,17 @@ Jump to location specified by argA, if in the last test (tst or btst), the resul
 
 argA     | cycles
 ---------|-------
-areg     | 8
-@areg    | 16
-@areg+   | 16
-@areg-   | 16
-dreg     | 8
-sp(ofs)  | 12
-@sp(ofs) | 20
-ival     | 12
-@ival    | 24
-label    | 12
-@label   | 24
+areg     | 4
+@areg    | 12
+@areg+   | 12
+@areg-   | 12
+dreg     | 4
+sp(ofs)  | 8
+@sp(ofs) | 16
+ival     | 8
+@ival    | 20
+label    | 8
+@label   | 20
 freg     | -
 fval     | -
 
@@ -937,17 +937,17 @@ Decrement argB, compare it to zero, and jump to location specified by argA, if a
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@areg            | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@areg+           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@areg-           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|dreg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|sp(ofs)          | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@sp(ofs)         | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|ival             | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@ival            | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
-|label            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@label           | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
+|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
+|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
+|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
+|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -965,17 +965,17 @@ Decrement argB, compare it to zero, and jump to location specified by argA, if a
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@areg            | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@areg+           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@areg-           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|dreg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|sp(ofs)          | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@sp(ofs)         | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|ival             | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@ival            | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
-|label            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@label           | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
+|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
+|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
+|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
+|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -993,17 +993,17 @@ Decrement argB, compare it to zero, and jump to location specified by argA, if a
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@areg            | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@areg+           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@areg-           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|dreg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|sp(ofs)          | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@sp(ofs)         | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|ival             | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@ival            | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
-|label            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@label           | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
+|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
+|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
+|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
+|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -1021,17 +1021,17 @@ Decrement argB, compare it to zero, and jump to location specified by argA, if a
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@areg            | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@areg+           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@areg-           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|dreg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|sp(ofs)          | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@sp(ofs)         | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|ival             | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@ival            | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
-|label            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@label           | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
+|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
+|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
+|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
+|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -1049,17 +1049,17 @@ Decrement argB, compare it to zero, and jump to location specified by argA, if a
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@areg            | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@areg+           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@areg-           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|dreg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|sp(ofs)          | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@sp(ofs)         | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|ival             | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@ival            | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
-|label            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@label           | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
+|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
+|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
+|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
+|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -1077,17 +1077,17 @@ Decrement argB, compare it to zero, and jump to location specified by argA, if a
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@areg            | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@areg+           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@areg-           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|dreg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|sp(ofs)          | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@sp(ofs)         | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|ival             | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@ival            | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
-|label            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@label           | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
+|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
+|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
+|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
+|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -1105,17 +1105,17 @@ Decrement argB, compare it to zero, and jump to location specified by argA, if a
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@areg            | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@areg+           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@areg-           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|dreg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|sp(ofs)          | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@sp(ofs)         | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|ival             | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@ival            | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
-|label            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@label           | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
+|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
+|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
+|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
+|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -1133,17 +1133,17 @@ Decrement argB, compare it to zero, and jump to location specified by argA, if a
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@areg            | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@areg+           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|@areg-           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|dreg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|sp(ofs)          | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@sp(ofs)         | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|ival             | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@ival            | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
-|label            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@label           | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | -       | -       |
+|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
+|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
+|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
+|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
+|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
+|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -1161,19 +1161,19 @@ Push the value specified by argA onto the stack.
 
 argA     | cycles
 ---------|-------
-areg     | 8
-@areg    | 16
-@areg+   | 16
-@areg-   | 16
-dreg     | 8
-sp(ofs)  | 12
-@sp(ofs) | 20
-ival     | 12
-@ival    | 24
-label    | 12
-@label   | 24
-freg     | 8
-fval     | 12
+areg     | 4
+@areg    | 12
+@areg+   | 12
+@areg-   | 12
+dreg     | 4
+sp(ofs)  | 8
+@sp(ofs) | 16
+ival     | 8
+@ival    | 20
+label    | 8
+@label   | 20
+freg     | 4
+fval     | 8
 
 
 pop
@@ -1189,18 +1189,18 @@ Pop a value off the stack, and store it at the location specified by argA.
 
 argA     | cycles
 ---------|-------
-areg     | 8
-@areg    | 16
-@areg+   | 16
-@areg-   | 16
-dreg     | 8
-sp(ofs)  | 12
-@sp(ofs) | 20
+areg     | 4
+@areg    | 12
+@areg+   | 12
+@areg-   | 12
+dreg     | 4
+sp(ofs)  | 8
+@sp(ofs) | 16
 ival     | -
-@ival    | 24
+@ival    | 20
 label    | -
-@label   | 24
-freg     | 8
+@label   | 20
+freg     | 4
 fval     | -
 
 
@@ -1217,17 +1217,17 @@ Perform a bitwise AND on the value specified by argA and the value at the locati
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
-|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
-|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|areg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | -       | -       |
+|@areg            | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@areg+           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@areg-           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|dreg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | -       | -       |
+|sp(ofs)          | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@sp(ofs)         | 14      | 22      | 22      | 22      | 14      | 18      | 26      | -       | 30      | -       | 30      | -       | -       |
+|ival             | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@ival            | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
+|label            | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@label           | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -1245,17 +1245,17 @@ Perform a bitwise OR on the value specified by argA and the value at the locatio
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
-|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
-|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|areg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | -       | -       |
+|@areg            | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@areg+           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@areg-           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|dreg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | -       | -       |
+|sp(ofs)          | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@sp(ofs)         | 14      | 22      | 22      | 22      | 14      | 18      | 26      | -       | 30      | -       | 30      | -       | -       |
+|ival             | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@ival            | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
+|label            | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@label           | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -1273,17 +1273,17 @@ Perform a bitwise XOR on the value specified by argA and the value at the locati
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
-|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
-|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|areg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | -       | -       |
+|@areg            | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@areg+           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@areg-           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|dreg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | -       | -       |
+|sp(ofs)          | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@sp(ofs)         | 14      | 22      | 22      | 22      | 14      | 18      | 26      | -       | 30      | -       | 30      | -       | -       |
+|ival             | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@ival            | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
+|label            | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@label           | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -1301,17 +1301,17 @@ Perform a bitwise NOT on the value at the location specified by argA.
 
 argA     | cycles
 ---------|-------
-areg     | 4
-@areg    | 12
-@areg+   | 12
-@areg-   | 12
-dreg     | 4
-sp(ofs)  | 8
-@sp(ofs) | 16
+areg     | 2
+@areg    | 10
+@areg+   | 10
+@areg-   | 10
+dreg     | 2
+sp(ofs)  | 6
+@sp(ofs) | 14
 ival     | -
-@ival    | 20
+@ival    | 18
 label    | -
-@label   | 20
+@label   | 18
 freg     | -
 fval     | -
 
@@ -1329,17 +1329,17 @@ Set the bit at bit index specified by argA, in the value at the location specifi
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
-|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
-|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|areg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | -       | -       |
+|@areg            | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@areg+           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@areg-           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|dreg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | -       | -       |
+|sp(ofs)          | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@sp(ofs)         | 14      | 22      | 22      | 22      | 14      | 18      | 26      | -       | 30      | -       | 30      | -       | -       |
+|ival             | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@ival            | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
+|label            | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@label           | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -1357,17 +1357,17 @@ Clear the bit at bit index specified by argA, in the value at the location speci
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
-|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
-|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|areg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | -       | -       |
+|@areg            | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@areg+           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@areg-           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|dreg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | -       | -       |
+|sp(ofs)          | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@sp(ofs)         | 14      | 22      | 22      | 22      | 14      | 18      | 26      | -       | 30      | -       | 30      | -       | -       |
+|ival             | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@ival            | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
+|label            | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@label           | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -1385,17 +1385,17 @@ Test the bit at bit index specified by argA, in the value at the location specif
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
-|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
-|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|areg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | -       | -       |
+|@areg            | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@areg+           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@areg-           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|dreg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | -       | -       |
+|sp(ofs)          | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@sp(ofs)         | 14      | 22      | 22      | 22      | 14      | 18      | 26      | -       | 30      | -       | 30      | -       | -       |
+|ival             | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@ival            | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
+|label            | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@label           | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -1413,17 +1413,17 @@ Flip the bit at bit index specified by argA, in the value at the location specif
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
-|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
-|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|areg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | -       | -       |
+|@areg            | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@areg+           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@areg-           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|dreg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | -       | -       |
+|sp(ofs)          | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@sp(ofs)         | 14      | 22      | 22      | 22      | 14      | 18      | 26      | -       | 30      | -       | 30      | -       | -       |
+|ival             | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@ival            | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
+|label            | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@label           | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -1441,17 +1441,17 @@ Perform a bitwise left shift of the value at the location specified by argB. Num
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
-|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
-|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|areg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | -       | -       |
+|@areg            | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@areg+           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@areg-           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|dreg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | -       | -       |
+|sp(ofs)          | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@sp(ofs)         | 14      | 22      | 22      | 22      | 14      | 18      | 26      | -       | 30      | -       | 30      | -       | -       |
+|ival             | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@ival            | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
+|label            | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@label           | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -1469,17 +1469,17 @@ Perform a bitwise right shift of the value at the location specified by argB. Nu
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
-|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | -       | -       |
-|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | -       | -       |
-|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | -       | -       |
-|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
-|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | -       | -       |
-|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | -       | -       |
+|areg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | -       | -       |
+|@areg            | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@areg+           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|@areg-           | 10      | 18      | 18      | 18      | 10      | 14      | 22      | -       | 26      | -       | 26      | -       | -       |
+|dreg             | 2       | 10      | 10      | 10      | 2       | 6       | 14      | -       | 18      | -       | 18      | -       | -       |
+|sp(ofs)          | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@sp(ofs)         | 14      | 22      | 22      | 22      | 14      | 18      | 26      | -       | 30      | -       | 30      | -       | -       |
+|ival             | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@ival            | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
+|label            | 6       | 14      | 14      | 14      | 6       | 10      | 18      | -       | 22      | -       | 22      | -       | -       |
+|@label           | 18      | 26      | 26      | 26      | 18      | 22      | 30      | -       | 34      | -       | 34      | -       | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -1497,17 +1497,17 @@ Perform MOD on argB by argA and store the result at the location specified by ar
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
-|@areg            | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|@areg+           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|@areg-           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|dreg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
-|sp(ofs)          | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
-|@sp(ofs)         | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|ival             | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
-|@ival            | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
-|label            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
-|@label           | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | 4       | -       |
+|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | 4       | -       |
+|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
+|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
+|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -1526,18 +1526,18 @@ Perform MOD on argB by argA and store the result at the location specified by ar
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
 |areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|@areg            | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
 |@areg+           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |@areg-           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|sp(ofs)          | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|@sp(ofs)         | -       | 36      | -       | -       | -       | 32      | 40      | -       | 44      | -       | 44      | 28      | -       |
+|sp(ofs)          | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|@sp(ofs)         | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
 |ival             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@ival            | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
+|@ival            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
 |label            | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@label           | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
-|freg             | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|fval             | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
+|@label           | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|freg             | -       | 16      | -       | -       | -       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|fval             | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
 
 
 abs
@@ -1553,17 +1553,17 @@ Perform ABS on argA and store the result at the location specified by argB.
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
-|@areg            | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|@areg+           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|@areg-           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|dreg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
-|sp(ofs)          | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
-|@sp(ofs)         | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|ival             | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
-|@ival            | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
-|label            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
-|@label           | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | 4       | -       |
+|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | 4       | -       |
+|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
+|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
+|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -1582,18 +1582,18 @@ Perform ABS on argA and store the result at the location specified by argB.
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
 |areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|@areg            | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
 |@areg+           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |@areg-           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|sp(ofs)          | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|@sp(ofs)         | -       | 36      | -       | -       | -       | 32      | 40      | -       | 44      | -       | 44      | 28      | -       |
+|sp(ofs)          | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|@sp(ofs)         | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
 |ival             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@ival            | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
+|@ival            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
 |label            | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@label           | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
-|freg             | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|fval             | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
+|@label           | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|freg             | -       | 16      | -       | -       | -       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|fval             | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
 
 
 pow
@@ -1609,17 +1609,17 @@ Perform POW on argB by argA and store the result at the location specified by ar
 
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
-|areg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
-|@areg            | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|@areg+           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|@areg-           | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|dreg             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
-|sp(ofs)          | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
-|@sp(ofs)         | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|ival             | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
-|@ival            | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
-|label            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
-|@label           | 24      | 32      | 32      | 32      | 24      | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|areg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | 4       | -       |
+|@areg            | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|@areg+           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|@areg-           | 12      | 20      | 20      | 20      | 12      | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|dreg             | 4       | 12      | 12      | 12      | 4       | 8       | 16      | -       | 20      | -       | 20      | 4       | -       |
+|sp(ofs)          | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|@sp(ofs)         | 16      | 24      | 24      | 24      | 16      | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
+|ival             | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|@ival            | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
+|label            | 8       | 16      | 16      | 16      | 8       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|@label           | 20      | 28      | 28      | 28      | 20      | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
 |freg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |fval             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 
@@ -1638,18 +1638,18 @@ Perform POW on argB by argA and store the result at the location specified by ar
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
 |areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|@areg            | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
 |@areg+           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |@areg-           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|sp(ofs)          | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|@sp(ofs)         | -       | 36      | -       | -       | -       | 32      | 40      | -       | 44      | -       | 44      | 28      | -       |
+|sp(ofs)          | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|@sp(ofs)         | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
 |ival             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@ival            | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
+|@ival            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
 |label            | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@label           | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
-|freg             | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|fval             | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
+|@label           | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|freg             | -       | 16      | -       | -       | -       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|fval             | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
 
 
 sin
@@ -1666,18 +1666,18 @@ Calculate SIN of the value specified by argA, and store the result at the locati
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
 |areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|@areg            | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
 |@areg+           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |@areg-           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|sp(ofs)          | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|@sp(ofs)         | -       | 36      | -       | -       | -       | 32      | 40      | -       | 44      | -       | 44      | 28      | -       |
+|sp(ofs)          | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|@sp(ofs)         | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
 |ival             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@ival            | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
+|@ival            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
 |label            | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@label           | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
-|freg             | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|fval             | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
+|@label           | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|freg             | -       | 16      | -       | -       | -       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|fval             | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
 
 
 cos
@@ -1694,18 +1694,18 @@ Calculate COS of the value specified by argA, and store the result at the locati
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
 |areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|@areg            | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
 |@areg+           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |@areg-           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|sp(ofs)          | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|@sp(ofs)         | -       | 36      | -       | -       | -       | 32      | 40      | -       | 44      | -       | 44      | 28      | -       |
+|sp(ofs)          | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|@sp(ofs)         | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
 |ival             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@ival            | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
+|@ival            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
 |label            | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@label           | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
-|freg             | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|fval             | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
+|@label           | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|freg             | -       | 16      | -       | -       | -       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|fval             | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
 
 
 tan
@@ -1722,18 +1722,18 @@ Calculate TAN of the value specified by argA, and store the result at the locati
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
 |areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|@areg            | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
 |@areg+           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |@areg-           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|sp(ofs)          | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|@sp(ofs)         | -       | 36      | -       | -       | -       | 32      | 40      | -       | 44      | -       | 44      | 28      | -       |
+|sp(ofs)          | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|@sp(ofs)         | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
 |ival             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@ival            | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
+|@ival            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
 |label            | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@label           | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
-|freg             | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|fval             | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
+|@label           | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|freg             | -       | 16      | -       | -       | -       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|fval             | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
 
 
 asin
@@ -1750,18 +1750,18 @@ Calculate ASIN of the value specified by argA, and store the result at the locat
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
 |areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|@areg            | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
 |@areg+           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |@areg-           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|sp(ofs)          | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|@sp(ofs)         | -       | 36      | -       | -       | -       | 32      | 40      | -       | 44      | -       | 44      | 28      | -       |
+|sp(ofs)          | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|@sp(ofs)         | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
 |ival             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@ival            | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
+|@ival            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
 |label            | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@label           | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
-|freg             | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|fval             | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
+|@label           | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|freg             | -       | 16      | -       | -       | -       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|fval             | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
 
 
 acos
@@ -1778,18 +1778,18 @@ Calculate ACOS of the value specified by argA, and store the result at the locat
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
 |areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|@areg            | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
 |@areg+           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |@areg-           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|sp(ofs)          | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|@sp(ofs)         | -       | 36      | -       | -       | -       | 32      | 40      | -       | 44      | -       | 44      | 28      | -       |
+|sp(ofs)          | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|@sp(ofs)         | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
 |ival             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@ival            | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
+|@ival            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
 |label            | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@label           | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
-|freg             | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|fval             | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
+|@label           | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|freg             | -       | 16      | -       | -       | -       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|fval             | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
 
 
 atan
@@ -1806,18 +1806,18 @@ Calculate ATAN of the value specified by argA, and store the result at the locat
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
 |areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|@areg            | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
 |@areg+           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |@areg-           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|sp(ofs)          | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|@sp(ofs)         | -       | 36      | -       | -       | -       | 32      | 40      | -       | 44      | -       | 44      | 28      | -       |
+|sp(ofs)          | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|@sp(ofs)         | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
 |ival             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@ival            | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
+|@ival            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
 |label            | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@label           | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
-|freg             | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|fval             | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
+|@label           | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|freg             | -       | 16      | -       | -       | -       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|fval             | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
 
 
 exp
@@ -1834,18 +1834,18 @@ Calculate EXP of the value specified by argA, and store the result at the locati
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
 |areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|@areg            | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
 |@areg+           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |@areg-           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|sp(ofs)          | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|@sp(ofs)         | -       | 36      | -       | -       | -       | 32      | 40      | -       | 44      | -       | 44      | 28      | -       |
+|sp(ofs)          | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|@sp(ofs)         | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
 |ival             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@ival            | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
+|@ival            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
 |label            | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@label           | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
-|freg             | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|fval             | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
+|@label           | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|freg             | -       | 16      | -       | -       | -       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|fval             | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
 
 
 log
@@ -1862,18 +1862,18 @@ Calculate LOG of the value specified by argA, and store the result at the locati
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
 |areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|@areg            | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
 |@areg+           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |@areg-           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|sp(ofs)          | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|@sp(ofs)         | -       | 36      | -       | -       | -       | 32      | 40      | -       | 44      | -       | 44      | 28      | -       |
+|sp(ofs)          | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|@sp(ofs)         | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
 |ival             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@ival            | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
+|@ival            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
 |label            | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@label           | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
-|freg             | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|fval             | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
+|@label           | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|freg             | -       | 16      | -       | -       | -       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|fval             | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
 
 
 sqrt
@@ -1890,16 +1890,16 @@ Calculate SQRT of the value specified by argA, and store the result at the locat
 |**argA**/**argB**| areg    | @areg   | @areg+  | @areg-  | dreg    | sp(ofs) | @sp(ofs)| ival    | @ival   | label   | @label  | freg    | fval    |
 |-----------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|
 |areg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@areg            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|@areg            | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
 |@areg+           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |@areg-           | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
 |dreg             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|sp(ofs)          | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
-|@sp(ofs)         | -       | 36      | -       | -       | -       | 32      | 40      | -       | 44      | -       | 44      | 28      | -       |
+|sp(ofs)          | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
+|@sp(ofs)         | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
 |ival             | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@ival            | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
+|@ival            | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
 |label            | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       | -       |
-|@label           | -       | 40      | -       | -       | -       | 36      | 44      | -       | 48      | -       | 48      | 32      | -       |
-|freg             | -       | 24      | -       | -       | -       | 20      | 28      | -       | 32      | -       | 32      | 16      | -       |
-|fval             | -       | 28      | -       | -       | -       | 24      | 32      | -       | 36      | -       | 36      | 20      | -       |
+|@label           | -       | 32      | -       | -       | -       | 28      | 36      | -       | 40      | -       | 40      | 24      | -       |
+|freg             | -       | 16      | -       | -       | -       | 12      | 20      | -       | 24      | -       | 24      | 8       | -       |
+|fval             | -       | 20      | -       | -       | -       | 16      | 24      | -       | 28      | -       | 28      | 12      | -       |
 
