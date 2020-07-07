@@ -85,6 +85,9 @@ int app_proc( app_t* app, void* user_data ) {
         }
         memcpy( ram, code, code_size );
         asm_free( code );
+        char* disasm = asm_disassemble( ram, code_size );
+        printf( "%s", disasm );
+        asm_free( disasm );
     } else {
         // Write some machine code to ram at address 0 - a simple test program writing pixels. Placeholder until we have an assembler
         uint32_t* prg = (uint32_t*) ram;
