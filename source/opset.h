@@ -247,7 +247,7 @@ void cpu_gen_docs( char const* filename ) {
     int current_index = 0;
     int start_index = 0;
     int instruction_count = sizeof( opinfo ) / sizeof( *opinfo );
-    while( current_index <= instruction_count ) {
+    while( current_index < instruction_count ) {
         if( opinfo[ start_index ].op != opinfo[ current_index ].op ) {
             char const* mnemonic = cpu_opinfo_mnemonic( (uint8_t) start_index );
             fprintf( fp,"\n%s\n", mnemonic );

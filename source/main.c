@@ -1,9 +1,11 @@
 #define _CRT_SECURE_NO_WARNINGS
+#define _CRT_NONSTDC_NO_WARNINGS
 #include <string.h>
 #include <stdio.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <ctype.h>
 #include <math.h>
 #include "libs/app.h"
 
@@ -17,6 +19,7 @@
 #include "opset.h"
 #include "mmu.h"
 #include "cpu.h"
+#include "asm.h"
 #include "svgs.h"
 
 /*
@@ -49,7 +52,7 @@ int main( int argc, char** argv ) {
     #endif
 
     cpu_gen_docs( "svgs_cpu.md" );
-    return svgs();
+    return svgs( argc, argv );
 } 
 
 #ifdef _WIN32
@@ -74,6 +77,8 @@ int main( int argc, char** argv ) {
 #include "mmu.h"
 #include "opset.h"
 #include "cpu.h"
+#include "asm.h"
+#include "svgs.h"
 
 #define APP_IMPLEMENTATION
 #ifdef _WIN32

@@ -1,3 +1,13 @@
+#ifndef svgs_h
+#define svgs_h
+
+int svgs( int argc, char** argv );
+
+#endif /* svgs_h */
+
+
+#ifdef SVGS_IMPLEMENTATION
+
 
 APP_U32 palette[ 256 ] = {
     0x000000, 0x0000aa, 0x00aa00, 0x00aaaa, 0xaa0000, 0xaa00aa, 0xaa5500, 0xaaaaaa, 0x555555, 0x5555ff, 0x55ff55, 0x55ffff, 0xff5555, 0xff55ff, 0xffff55, 0xffffff,
@@ -20,7 +30,7 @@ APP_U32 palette[ 256 ] = {
 
 
 int app_proc( app_t* app, void* user_data ) {
-    (void) user_data;
+    char const* asm_file = (char const*) user_data;
 
     app_title( app, "SuperVGS" );
     app_screenmode( app, APP_SCREENMODE_WINDOW );
@@ -37,16 +47,55 @@ int app_proc( app_t* app, void* user_data ) {
     mmu_t* mmu = mmu_create( ram, ram_size );
     cpu_t* cpu = cpu_create( mmu );
 
-    // Write some machine code to ram at address 0 - a simple test program writing pixels. Placeholder until we have an assembler
-    uint32_t* prg = (uint32_t*) ram;
-    for( int i = 0; i < 256; ++i ) {
-        *prg++ = ( CPU_OP_MOVE ) | ( CPU_OPTYPE_BYTE << 8 ) | ( CPU_ARGTYPE_INTEGER << 16 ) | ( CPU_ARGTYPE_AT_INTEGER << 24 );  // MOVE instruction
-        *prg++ = i; // Palette index (argA)
-        *prg++ = 0x30000 + i; // Screen address, increment by 1 each pixel
+    if( asm_file && *asm_file ) {
+        FILE* fp = fopen( asm_file, "r" );
+        if( !fp ) {
+            cpu_destroy( cpu );
+            mmu_destroy( mmu );
+            free( ram );
+            printf( "Failed to open file '%s'\n", asm_file );
+            return 0;
+        }
+        fseek( fp, 0, SEEK_END );
+        size_t size = ftell( fp );
+        fseek( fp, 0, SEEK_SET );
+        char* file = (char*)malloc( size + 1 );
+        size = fread( file, 1, size, fp );
+        fclose( fp );
+        file[ size ] = '\0';
+        size_t code_size = 0;
+        asm_error_t error = ASM_ERROR_NO_ERROR;
+        int error_line = -1;
+        void* code = asm_assemble( file, size, &code_size, &error, &error_line );
+        free( file );
+        if( !code || code_size > (size_t)ram_size ) {
+            cpu_destroy( cpu );
+            mmu_destroy( mmu );
+            free( ram );
+            printf( "Failed to assemble file '%s'\n", asm_file );
+            char const* error_strings[] = { "No error", "No data", "Unexpected token", "Invalid operands", "Colon expected", "Undefined label", };
+	        if( error > 0 && error < sizeof( error_strings ) / sizeof( *error_strings ) ) {
+                if( error_line >= 0 ) {
+                    printf( "%s at line %d\n", error_strings[ error ], error_line + 1 );
+                } else {
+                    printf( "%s\n", error_strings[ error ] );
+                }
+            }
+            return 0;
+        }
+        memcpy( ram, code, code_size );
+        asm_free( code );
+    } else {
+        // Write some machine code to ram at address 0 - a simple test program writing pixels. Placeholder until we have an assembler
+        uint32_t* prg = (uint32_t*) ram;
+        for( int i = 0; i < 256; ++i ) {
+            *prg++ = ( CPU_OP_MOVE ) | ( CPU_OPTYPE_BYTE << 8 ) | ( CPU_ARGTYPE_INTEGER << 16 ) | ( CPU_ARGTYPE_AT_INTEGER << 24 );  // MOVE instruction
+            *prg++ = i; // Palette index (argA)
+            *prg++ = 0x30000 + i; // Screen address, increment by 1 each pixel
+        }
+        *prg++ =  ( CPU_OP_JMP ) | ( CPU_OPTYPE_LONG << 8 ) | ( CPU_ARGTYPE_INTEGER << 16 ) | ( CPU_ARGTYPE_NONE << 24 ); // JUMP instruction
+        *prg++ = 0; // Jump to start of program
     }
-    *prg++ =  ( CPU_OP_JMP ) | ( CPU_OPTYPE_LONG << 8 ) | ( CPU_ARGTYPE_INTEGER << 16 ) | ( CPU_ARGTYPE_NONE << 24 ); // JUMP instruction
-    *prg++ = 0; // Jump to start of program
-
 
     while( app_yield( app ) != APP_STATE_EXIT_REQUESTED ) {
         // Run CPU for this frame
@@ -65,10 +114,14 @@ int app_proc( app_t* app, void* user_data ) {
 
     cpu_destroy( cpu );
     mmu_destroy( mmu );
+    free( ram );
     return 0;
 }
 
 
-int svgs( void ) {
-   return app_run( app_proc, NULL, NULL, NULL, NULL ); 
+int svgs( int argc, char** argv ) {
+   return app_run( app_proc, argc > 1 ? argv[ 1 ] : NULL, NULL, NULL, NULL ); 
 }
+
+
+#endif /* SVGS_IMPLEMENTATION */
