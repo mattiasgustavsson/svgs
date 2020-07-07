@@ -24,6 +24,13 @@ void asm_free( void* ptr );
 #ifndef _WIN32 
     #define stricmp strcasecmp
     #define strnicmp strncasecmp
+
+    void strlwr( char* str ) {
+        while( *str ) {
+            *str = tolower( *str );
+            ++str;
+        }
+    }    
 #endif
 
 
@@ -819,7 +826,7 @@ tokentype_t get_next_token( string_array_t* lines, int* lexeme_index_0, int* lex
 	// Extract the lexeme 
 	strncpy( current_lexeme, &lines->items[ *current_line ][ *lexeme_index_0 ], (size_t)( *lexeme_index_1 - *lexeme_index_0 ) );
 	current_lexeme[ *lexeme_index_1 - *lexeme_index_0 ] = '\0'; // Terminate the string
-	strlwr( current_lexeme ); // Convert to upper case
+	strlwr( current_lexeme ); // Convert to lower case
 
 
     ///////
