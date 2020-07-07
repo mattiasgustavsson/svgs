@@ -20,6 +20,13 @@ void asm_free( void* ptr );
 
 #ifdef SVGS_IMPLEMENTATION
 
+
+#ifndef _WIN32 
+    #define stricmp strcasecmp
+    #define strnicmp strncasecmp
+#endif
+
+
 typedef enum tokentype_t {
 	TOKENTYPE_INVALID,
 	TOKENTYPE_NEWLINE,
