@@ -1,4 +1,9 @@
-runtime
-.github
 *.obj
 *.exe
+.vs
+.build_temp
+.runtime
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
