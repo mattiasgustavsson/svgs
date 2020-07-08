@@ -180,6 +180,7 @@ void label_to_resolve_array_add( label_to_resolve_array_t* array, label_to_resol
 
 
 void label_to_resolve_array_remove( label_to_resolve_array_t* array, int index ) {
+    free( array->items[ index ].label );
     array->items[ index ] = array->items[ --array->count ];
 }
 
@@ -1676,12 +1677,19 @@ char* asm_disassemble( void* input, size_t input_size ) {
     // Main disassembly pass
     data = start;
 
+    bool is_in_dc_block = false;
+    int dc_count = 0;
+
     // Disassemble each instruction
     while( data < end ) {
         // Check if we should insert a label here
         for( int i = 0; i < labels_count; ++i ) {
             int offset = (int)( ( ( (uintptr_t) data ) - (uintptr_t) start ) );
             if( offset == labels[ i ] ) {
+                if( is_in_dc_block ) {
+                    outbuf_append_str( &output, "\n" );
+                    is_in_dc_block = false;
+                }
                 // Write label
                 char buf[ 256 ];
                 sprintf( buf, "label%d:\n", i );
@@ -1698,6 +1706,39 @@ char* asm_disassemble( void* input, size_t input_size ) {
         cpu_optype_t optype = (cpu_optype_t) opdata[ 1 ];
         cpu_argtype_t operand_a = (cpu_argtype_t) opdata[ 2 ];
         cpu_argtype_t operand_b = (cpu_argtype_t) opdata[ 3 ];
+
+        bool valid_op = true;
+        if( op < 0 || op >= CPU_OPCOUNT || optype < 0 || optype >= CPU_OPTYPECOUNT || operand_a < 0 || operand_a >= CPU_ARGTYPECOUNT || operand_b < 0 || operand_b >= CPU_ARGTYPECOUNT ) {
+            valid_op = false;
+        }
+        if( !valid_op || ( is_in_dc_block && opcode == 0 ) ) {
+            valid_op = false;
+        }
+        if( !valid_op || !cpu_opinfo_optype( op, optype ) || !cpu_opinfo_argtype_a( op, operand_a ) || !cpu_opinfo_argtype_b( op, operand_b ) ) {
+            valid_op = false;
+        }
+
+        if( !valid_op ) {
+            if( !is_in_dc_block ) {
+                outbuf_append_str( &output, "\tdc.l " );
+                is_in_dc_block = true;
+                dc_count = 0;
+            } else {
+                outbuf_append_str( &output, "," );
+            }
+            ++dc_count;
+            if( dc_count > 16 ) {
+                outbuf_append_str( &output, "\n\tdc.l " );
+                dc_count = 1;
+            }
+            char buf[ 256 ];
+            sprintf( buf, "$%08x", opcode );
+            outbuf_append_str( &output, buf );
+            continue;
+        } else if( is_in_dc_block ) {
+            outbuf_append_str( &output, "\n" );
+            is_in_dc_block = false;
+        }
         
         // Write the mnemonic for the instruction
         outbuf_append_str( &output, "\t" );
@@ -1891,6 +1932,7 @@ char* asm_disassemble( void* input, size_t input_size ) {
         outbuf_append_str( &output, "\n" );
         }
 
+    free( labels );
     outbuf_append( &output, "\0", 1 );
     return output.data;
 }

@@ -114,8 +114,8 @@ INLINE void addr_out( cpu_t* cpu, cpu_optype_t type, uint32_t address, uint32_t 
     switch( type ) {
         case CPU_OPTYPE_NONE:  break;
         case CPU_OPTYPE_BYTE:  mmu_write_byte( cpu->mmu, address, (uint8_t) value ); break;
-        case CPU_OPTYPE_WORD:  mmu_write_word( cpu->mmu, address, (uint8_t) value ); break;
-        case CPU_OPTYPE_LONG:  mmu_write_long( cpu->mmu, address, (uint8_t) value ); break;
+        case CPU_OPTYPE_WORD:  mmu_write_word( cpu->mmu, address, (uint16_t) value ); break;
+        case CPU_OPTYPE_LONG:  mmu_write_long( cpu->mmu, address, (uint32_t) value ); break;
         case CPU_OPTYPE_FLOAT: mmu_write_float( cpu->mmu, address, AS_FLOAT( value ) ); break;
     }
 }

@@ -113,6 +113,7 @@ int app_proc( app_t* app, void* user_data ) {
             
         }
         app_present( app, canvas, 320, 200, 0xffffff, 0x000000 );
+        ((uint8_t*)ram)[ 0x40000 ] = 1;
     }
 
     cpu_destroy( cpu );
