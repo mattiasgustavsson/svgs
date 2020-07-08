@@ -11,11 +11,14 @@
 #include "libs/app.h"
 
 
-#if defined( _WIN32 )
+#if defined( __TINYC__ )
+    #define INLINE
+#elif defined( _WIN32 )
     #define INLINE __forceinline
 #else
     #define INLINE inline __attribute__((always_inline))
 #endif
+
 
 #include "opset.h"
 #include "mmu.h"
