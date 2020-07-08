@@ -11,8 +11,7 @@ jobs:
       - uses: seanmiddleditch/gha-setup-vsdevenv@master
       - name: build svgs
         run: |
-          cd runtime
-          cl ../source/main.c
+          cl source\main.c
   build-macos:
     runs-on: macOS-latest
     steps:
@@ -21,8 +20,7 @@ jobs:
         run: brew install sdl2 glew
       - name: build svgs
         run: |
-          cd runtime
-          clang ../source/main.c -lSDL2 -lGLEW -framework OpenGL
+          clang source/main.c -lSDL2 -lGLEW -framework OpenGL
   build-linux-gcc:
     runs-on: ubuntu-18.04
     steps:
@@ -34,5 +32,4 @@ jobs:
           sudo apt-get install -qq libglew-dev
       - name: build svgs
         run: |
-          cd runtime
-          gcc ../source/main.c -lSDL2 -lGLEW -lGL -lm -lpthread
+          gcc source/main.c -lSDL2 -lGLEW -lGL -lm -lpthread
