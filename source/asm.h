@@ -1717,13 +1717,26 @@ char* asm_disassemble( void* input, size_t input_size ) {
         if( !valid_op || !cpu_opinfo_optype( op, optype ) || !cpu_opinfo_argtype_a( op, operand_a ) || !cpu_opinfo_argtype_b( op, operand_b ) ) {
             valid_op = false;
         }
-
+        bool is_reg_a = false;
+        if( valid_op && ( operand_a == CPU_ARGTYPE_AREG || operand_a == CPU_ARGTYPE_AT_AREG || operand_a == CPU_ARGTYPE_AT_AREG_INC || operand_a == CPU_ARGTYPE_AT_AREG_DEC || operand_a == CPU_ARGTYPE_DREG || operand_a ==CPU_ARGTYPE_FREG ) ) {
+            is_reg_a = true;
+        }
+        if( !valid_op || ( is_reg_a && *data >= CPU_REGCOUNT ) ) {
+            valid_op = false;
+        }
+        bool is_reg_b = false;
+        if( valid_op && ( operand_b == CPU_ARGTYPE_AREG || operand_b == CPU_ARGTYPE_AT_AREG || operand_b == CPU_ARGTYPE_AT_AREG_INC || operand_b == CPU_ARGTYPE_AT_AREG_DEC || operand_b == CPU_ARGTYPE_DREG || operand_b ==CPU_ARGTYPE_FREG ) ) {
+            is_reg_b = true;
+        }
+        if( !valid_op || ( is_reg_b && *(data + 1) >= CPU_REGCOUNT ) ) {
+            valid_op = false;
+        }
         if( !valid_op ) {
             if( !is_in_dc_block ) {
                 outbuf_append_str( &output, "\tdc.l " );
                 is_in_dc_block = true;
                 dc_count = 0;
-            } else {
+            } else if( dc_count < 16 ) {
                 outbuf_append_str( &output, "," );
             }
             ++dc_count;

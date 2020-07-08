@@ -3,7 +3,7 @@
 
 
 typedef enum cpu_op_t {
-    CPU_OP_NOP, CPU_OP_JSR, CPU_OP_JMP, CPU_OP_RET, CPU_OP_SYS,
+    CPU_OP_NOP, CPU_OP_JSR, CPU_OP_JMP, CPU_OP_SYS, CPU_OP_RET, 
     CPU_OP_MOVE, CPU_OP_XMOV, CPU_OP_ADD, CPU_OP_ADDF, CPU_OP_SUB, CPU_OP_SUBF, CPU_OP_NEG, CPU_OP_NEGF, 
     CPU_OP_MULS, CPU_OP_MULU, CPU_OP_MUL, CPU_OP_DIVS, CPU_OP_DIVU, CPU_OP_DIV, CPU_OP_ITOF, CPU_OP_FTOI,
     CPU_OP_CMPU, CPU_OP_CMPS, CPU_OP_CMP, CPU_OP_TST, CPU_OP_TSTF, 
@@ -115,8 +115,8 @@ static cpu_opinfo_t opinfo[ 256 ] = {
     { CPU_OP_NOP,   2, FOP_NONE | FAA_NONE      | FAB_NONE, "nop", "No operation" },
     { CPU_OP_JSR,   4, FOP_NONE | FAA_INT_RVAL  | FAB_NONE, "jsr", "Jump to subroutine at location specified by argA. Will push the current value of IP onto the stack before the jump." },
     { CPU_OP_JMP,   4, FOP_NONE | FAA_INT_RVAL  | FAB_NONE, "jmp", "Jump to location specified by argA." },
-    { CPU_OP_RET,   4, FOP_NONE | FAA_NONE      | FAB_NONE, "ret", "Return from subroutine call made by jsr. Will pop the return address off the stack." },
     { CPU_OP_SYS,  32, FOP_NONE | FAA_INT_RVAL  | FAB_NONE, "sys", "Make a BIOS call. See the BIOS documentation for available BIOS calls." },
+    { CPU_OP_RET,   4, FOP_NONE | FAA_NONE      | FAB_NONE, "ret", "Return from subroutine call made by jsr. Will pop the return address off the stack." },
 
     { CPU_OP_MOVE,  2, FOP_ANY      | FAA_ANY_RVAL | FAB_ANY_LVAL, "move", "Move the value specified by argA to the location specified by argB." },
     { CPU_OP_XMOV,  8, FOP_ANY      | FAA_ANYATREG | FAB_ANYATREG, "xmov", "Move the value specified by argA to the location specified by argB. This will be repeated 16 times." },

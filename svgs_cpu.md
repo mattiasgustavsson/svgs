@@ -71,19 +71,6 @@ freg     | -
 fval     | -
 
 
-ret
----
-
-### Syntax
-	ret
-
-### Function
-Return from subroutine call made by jsr. Will pop the return address off the stack.
-
-### Operand Types and Cycle Counts
-No operands. Cycle count: 4
-
-
 sys
 ---
 
@@ -110,6 +97,19 @@ label    | 36
 @label   | 48
 freg     | -
 fval     | -
+
+
+ret
+---
+
+### Syntax
+	ret
+
+### Function
+Return from subroutine call made by jsr. Will pop the return address off the stack.
+
+### Operand Types and Cycle Counts
+No operands. Cycle count: 4
 
 
 move
