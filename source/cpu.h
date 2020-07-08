@@ -301,21 +301,21 @@ int do_instruction( cpu_t* cpu ) {
         case CPU_OP_ROR:  STORE_B( arg_b >> arg_a ); break;
 
         case CPU_OP_MOD:  STORE_B( arg_a == 0 ? 0 : arg_b % arg_a ); break;
-        case CPU_OP_MODF: STORE_B( F_AS_UINT( fmodf( AS_FLOAT( arg_b ), AS_FLOAT( arg_a ) ) ) ); break;
+        case CPU_OP_MODF: STORE_B( F_AS_UINT( (float) fmod( (double) AS_FLOAT( arg_b ), AS_FLOAT( arg_a ) ) ) ); break;
         case CPU_OP_ABS:  STORE_B( AS_UINT( abs( AS_INT( arg_a ) ) ) ); break;
-        case CPU_OP_ABSF: STORE_B( F_AS_UINT( fabsf( AS_FLOAT( arg_a ) ) ) ); break;            
+        case CPU_OP_ABSF: STORE_B( F_AS_UINT( (float)fabs( (double) AS_FLOAT( arg_a ) ) ) ); break;            
         case CPU_OP_POW:  STORE_B( AS_UINT( ipow( AS_INT( arg_b ), AS_INT( arg_a ) ) ) ); break;
-        case CPU_OP_POWF: STORE_B( F_AS_UINT( powf( AS_FLOAT( arg_b ), AS_FLOAT( arg_a ) ) ) ); break;
+        case CPU_OP_POWF: STORE_B( F_AS_UINT( (float)pow( (double) AS_FLOAT( arg_b ), AS_FLOAT( arg_a ) ) ) ); break;
 
-        case CPU_OP_SIN:  STORE_B( F_AS_UINT( sinf( AS_FLOAT( arg_a ) ) ) ); break;
-        case CPU_OP_COS:  STORE_B( F_AS_UINT( cosf( AS_FLOAT( arg_a ) ) ) ); break;
-        case CPU_OP_TAN:  STORE_B( F_AS_UINT( tanf( AS_FLOAT( arg_a ) ) ) ); break;
-        case CPU_OP_ASIN: STORE_B( F_AS_UINT( asinf( AS_FLOAT( arg_a ) ) ) ); break;
-        case CPU_OP_ACOS: STORE_B( F_AS_UINT( acosf( AS_FLOAT( arg_a ) ) ) ); break;
-        case CPU_OP_ATAN: STORE_B( F_AS_UINT( atanf( AS_FLOAT( arg_a ) ) ) ); break;
-        case CPU_OP_EXP:  STORE_B( F_AS_UINT( expf( AS_FLOAT( arg_a ) ) ) ); break;
-        case CPU_OP_LOG:  STORE_B( F_AS_UINT( logf( AS_FLOAT( arg_a ) ) ) ); break;
-        case CPU_OP_SQRT: STORE_B( F_AS_UINT( sqrtf( AS_FLOAT( arg_a ) ) ) ); break;
+        case CPU_OP_SIN:  STORE_B( F_AS_UINT( (float) sin( (double) AS_FLOAT( arg_a ) ) ) ); break;
+        case CPU_OP_COS:  STORE_B( F_AS_UINT( (float) cos( (double) AS_FLOAT( arg_a ) ) ) ); break;
+        case CPU_OP_TAN:  STORE_B( F_AS_UINT( (float) tan( (double) AS_FLOAT( arg_a ) ) ) ); break;
+        case CPU_OP_ASIN: STORE_B( F_AS_UINT( (float) asin( (double) AS_FLOAT( arg_a ) ) ) ); break;
+        case CPU_OP_ACOS: STORE_B( F_AS_UINT( (float) acos( (double) AS_FLOAT( arg_a ) ) ) ); break;
+        case CPU_OP_ATAN: STORE_B( F_AS_UINT( (float) atan( (double) AS_FLOAT( arg_a ) ) ) ); break;
+        case CPU_OP_EXP:  STORE_B( F_AS_UINT( (float) exp( (double) AS_FLOAT( arg_a ) ) ) ); break;
+        case CPU_OP_LOG:  STORE_B( F_AS_UINT( (float) log( (double) AS_FLOAT( arg_a ) ) ) ); break;
+        case CPU_OP_SQRT: STORE_B( F_AS_UINT( (float) sqrt( (double) AS_FLOAT( arg_a ) ) ) ); break;
 
         default: return 4; // Default cycle count for unknown ops
     }
