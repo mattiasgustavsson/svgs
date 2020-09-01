@@ -2,12 +2,13 @@
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "strpool.h"
+
+#define PREPROC_STR STRPOOL_U32
 #include "preproc.h"
 
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-
 
 // debug function to print each token in the stream of preproc tokens
 void dbg_print_preproc_tokens( preproc_token_t* tokens, strpool_t* strings ) {
@@ -48,9 +49,9 @@ void dbg_c_from_preproc_tokens( char const* filename, preproc_token_t* tokens, s
             } else if( t->type == PREPROC_TOKEN_WARNING ) {
                 fprintf( fp, "\n#pragma message(\"%s\")\n\n", str );
             } else if( t->type == PREPROC_TOKEN_STRING_LITERAL ) {
-                fprintf( fp, "\"%s\"", str );
+                fprintf( fp, "\"%s\"", str ); // TODO: use escape codes for special chars
             } else if( t->type == PREPROC_TOKEN_CHARACTER_CONSTANT ) {
-                fprintf( fp, "'%s'", str );
+                fprintf( fp, "'%s'", str ); // TODO: use escape codes for special chars
             } else {
                 fprintf( fp, "%s", str );
             }
@@ -152,7 +153,7 @@ char const* files_load( files_t* files, STRPOOL_U32 header_name, strpool_t* stri
     return source;
 }
 
-char const* load_header( void* load_context, STRPOOL_U32 header_name, strpool_t* strings ) {
+char const* load_header( void* load_context, PREPROC_STR header_name, strpool_t* strings ) {
     return files_load( (files_t*) load_context, header_name, strings );
 }
 
@@ -296,4 +297,9 @@ int main( int argc, char* argv[] ) {
 #include "strpool.h"
 
 #define PREPROC_IMPLEMENTATION
+#define PREPROC_STR STRPOOL_U32
+#define PREPROC_STR_NULL 0
+#define PREPROC_STR_ALLOC( pool, str, len ) ( (STRPOOL_U32) strpool_inject( (pool), (str), (int) (len) ) )
+#define PREPROC_STR_CSTR( pool, handle ) ( strpool_cstr( (pool), (STRPOOL_U64) (handle) ) )
+#define PREPROC_STR_EQ( pool, a, b ) ( (void) pool, ( (a) == (b) ) )
 #include "preproc.h"
