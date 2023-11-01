@@ -22,7 +22,7 @@ jobs:
         run: |
           clang source/main.c -lSDL2 -lGLEW -framework OpenGL
   build-linux-gcc:
-    runs-on: ubuntu-18.04
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
       - name: install dependencies
